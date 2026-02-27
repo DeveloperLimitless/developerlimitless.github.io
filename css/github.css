@@ -1,92 +1,101 @@
-#front {
-  z-index: 1;
-  position: absolute;
-  background-color: #0b6570;
-  width:590px;
-  height: 620px;
-  text-align: center;
-  transition: 1s;
-  transform-origin: 0;
-  border: 1px solid #000;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  padding-top: 5%;
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#f8d7da,#fde2e4,#fff1f2);
+    font-family:'Shadows Into Light Two',cursive;
 }
 
-.open-card {
-  transform: rotateY(180deg);
+/* CENTER SCENE */
+.scene{
+    perspective:1500px;
 }
 
-#front-title {
-  max-width: 90%;
-  padding-bottom: 3%;
+/* CARD */
+.card{
+    width:850px;
+    height:520px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:1s;
 }
 
-#front-pic {
-  max-width: 75%;
+/* OPEN STATE */
+.card.open{
+    transform:rotateY(-180deg);
 }
 
-#inside {
-  z-index: 0;
-  position: absolute;
-  background-color: white;
-  width: 590px;
-  height: 620px;
-  text-align: center;
-  border: 1px solid #000;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  padding-top: 5%;
+/* FRONT COVER */
+.front,
+.inside{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:20px;
+    backface-visibility:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
 
-#inside-recipient {
-  color: #000;
-  font-size: 12pt;
-  padding: 20px 0 40px 0;
+/* FRONT */
+.front{
+    background:#176b6b;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
 }
 
-#inside-pic {
-  width: auto;
-  height: 150px;
-  margin-bottom: 32px;
+.title{
+    width:250px;
 }
 
-#message {
-  font-size: 12pt;
-  text-align: center;
-  padding: 0 20px 0 20px;
+.octo{
+    width:200px;
+    animation:float 3s ease-in-out infinite;
 }
 
-#inside-sender {
-  color: #000;
-  font-size: 12pt;
-  text-align: center;
-  padding: 0 20px 0 20px;
+.front p{
+    font-size:20px;
 }
 
-
-body {
-  font-family: 'Shadows Into Light Two', cursive;
-
-  background: linear-gradient(-45deg, white, #fee4e1, #b4d3dd, #bab4dd);
-  background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
- 
+/* FLOAT */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
 }
 
-@-webkit-keyframes Gradient {
-  0% {
-    background-position: 0% 50%
-  }
-  50% {
-    background-position: 100% 50%
-  }
-  100% {
-    background-position: 0% 50%
-  }
+/* INSIDE LETTER */
+.inside{
+    background:
+    repeating-linear-gradient(
+        white,
+        white 28px,
+        #ececec 29px
+    );
+    padding:40px;
+    transform:rotateY(180deg);
 }
 
+.inside h2{
+    margin-top:0;
+}
+
+.inside p{
+    line-height:1.7;
+    font-size:18px;
+}
+
+.inside a{
+    text-decoration:none;
+    color:#e63946;
+    font-weight:bold;
+}
+
+.inside h3{
+    text-align:right;
+}
